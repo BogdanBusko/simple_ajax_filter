@@ -1,0 +1,13 @@
+<%= form_for :post, url: posts_path, method: :get, remote: true do |f| %>
+  <%= f.select :filter, Post::FILTER, {}, onChange: "Rails.fire(document.forms[0], 'submit')", name: 'filter' %>
+<% end %>
+
+<p style="color: green"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<div id="posts">
+  <%= render 'posts/posts', posts: @posts %>
+</div>
+
+<%= link_to "New post", new_post_path %>
